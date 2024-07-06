@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערכת מאמן כדורגל</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>מערכת מאמן כדורגל לבחירת קבוצות</h1>
+        
+        <div class="card" id="random-players">
+            <h2>יצירת שחקנים רנדומליים</h2>
+            <label for="random-team-size">גודל קבוצה:</label>
+            <input type="number" id="random-team-size" min="5" value="5" aria-label="גודל קבוצה">
+            <label for="random-num-teams">מספר קבוצות:</label>
+            <input type="number" id="random-num-teams" min="2" value="2" aria-label="מספר קבוצות">
+            <button onclick="generateRandomPlayers()" class="btn">צור שחקנים רנדומליים</button>
+        </div>
+        
+        <div class="card" id="player-input">
+            <h2>הכנסת שחקנים</h2>
+            <input type="text" id="player-name" placeholder="שם השחקן" aria-label="שם השחקן">
+            <input type="number" id="player-level" min="1" max="5" placeholder="רמה (1-5)" aria-label="רמת השחקן">
+            <button onclick="addPlayer()" class="btn"><i class="fas fa-plus" aria-hidden="true"></i> הוסף שחקן</button>
+        </div>
+        
+        <div class="card" id="team-size">
+            <h2>גודל קבוצה</h2>
+            <input type="number" id="team-size-input" min="2" value="5" max="11" aria-label="עדכון גודל קבוצה">
+            <button onclick="updateTeamSize()" class="btn">עדכן גודל קבוצה</button>
+        </div>
+        
+        <div class="card" id="player-list">
+            <h2>רשימת שחקנים</h2>
+            <ul id="players" aria-live="polite"></ul>
+        </div>
+        
+        <button onclick="createRandomTeams()" class="btn btn-large"><i class="fas fa-random" aria-hidden="true"></i> צור קבוצות רנדומליות</button>
+        
+        <div id="teams" aria-live="polite"></div>
+    </div>
+
+    <div id="chat-icon" onclick="toggleChat()" aria-label="פתח צ'אט">
+        <i class="fas fa-comments" aria-hidden="true"></i>
+    </div>
+
+    <div id="chat-container" style="display: none;">
+        <div id="chat-header">
+            שיחה עם המאמן
+            <button onclick="toggleChat()" class="btn-close" aria-label="סגור צ'אט">×</button>
+        </div>
+        <div id="chat-messages" aria-live="polite"></div>
+        <div id="chat-input-container">
+            <input type="text" id="chat-input" placeholder="הקלד הודעה..." aria-label="הודעת צ'אט">
+            <button onclick="sendMessage()" class="btn">שלח</button>
+        </div>
+    </div>
+
+    <button onclick="explainTeams()" class="btn btn-large">הסבר על הקבוצות</button>
+
+    <script src="chatConstants.js"></script>
+    <script src="chatInit.js"></script>
+    <script src="chatAPI.js"></script>
+    <script src="chatMessages.js"></script>
+    <script src="chatTeams.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
